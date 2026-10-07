@@ -28,9 +28,22 @@ theorem quadratic_reciprocity
   rw [card p] at h
   have nc : ∀ n r : ℕ, ((n : ℤ) : ZMod r) = n := fun n r => by norm_cast
   have nc' : (((-1) ^ (p / 2) : ℤ) : ZMod q) = (-1) ^ (p / 2) := by norm_cast
-  rw [legendreSym, legendreSym, nc, nc, h, map_mul, mul_rotate', mul_comm (p / 2), ← pow_two,
-    quadraticChar_sq_one (prime_ne_zero q p hpq.symm), mul_one, pow_mul, χ₄_eq_neg_one_pow hp₁, nc',
-    map_pow, quadraticChar_neg_one hq₂, card q, χ₄_eq_neg_one_pow hq₁]
+  rw [legendreSym, legendreSym]
+  rw [nc, nc]
+  rw [h]
+  rw [map_mul]
+  rw [mul_rotate']
+  rw [mul_comm (p / 2)]
+  rw [← pow_two]
+  rw [quadraticChar_sq_one (prime_ne_zero q p hpq.symm)]
+  rw [mul_one]
+  rw [pow_mul]
+  rw [χ₄_eq_neg_one_pow hp₁]
+  rw [nc']
+  rw [map_pow]
+  rw [quadraticChar_neg_one hq₂]
+  rw [card q]
+  rw [χ₄_eq_neg_one_pow hq₁]
 
 -- Declara formalmente que 7 é um número primo para o ambiente de testes
 instance : Fact (Nat.Prime 7) :=  ⟨by decide⟩
